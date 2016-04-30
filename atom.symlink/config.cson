@@ -1,39 +1,39 @@
 "*":
   core:
-    disabledPackages: [
-      "background-tips"
-      "exception-reporting"
-      "metrics"
-    ]
-    followSymlinks: false
-    hideGitIgnoredFiles: true
-    ignoredNames: [
-      ".bundle"
-      ".git"
-      "log"
-      "repositories"
-      "tmp"
-      "vendor"
-    ]
     themes: [
-      "unity-ui"
-      "glacier-syntax"
+      "atom-dark-ui"
+      "base16-tomorrow-dark-theme"
     ]
   editor:
-    fontFamily: "Menlo"
+    fontSize: 13
     invisibles: {}
-    showIndentGuide: true
-    softWrapAtPreferredLineLength: true
-  "go-plus":
-    goPath: "/Users/holman/Code/go"
-  "release-notes":
-    viewedVersion: "0.89.0"
-  "spell-check":
-    grammars: [
-      "text.plain"
-      "source.gfm"
-      "text.git-commit"
-      "text.html.basic"
-    ]
+    showInvisibles: true
+    zoomFontWhenCtrlScrolling: true
+  "exception-reporting":
+    userId: "e0f77934-8a3c-ef20-a5c7-e74b11d52728"
+  "lisp-paredit": {}
+  "one-dark-ui": {}
+  "proto-repl":
+    autoPrettyPrint: true
+  "tool-bar":
+    fullWidth: false
+    iconSize: "16px"
   welcome:
     showOnStartup: false
+".clojure.source":
+  editor:
+    nonWordCharacters: "()\"':,;~@#$%^&{}[]`"
+    scrollPastEnd: true
+    tabLength: 1
+".css.scss.source":
+  editor:
+    tabLength: 4
+".js.regexp.replacement.source":
+  editor:
+    nonWordCharacters: "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-…$"
+".js.regexp.source":
+  editor:
+    nonWordCharacters: "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-…$"
+".js.source":
+  editor:
+    nonWordCharacters: "/\\()\"':,.;<>~!@#%^&*|+=[]{}`?-…"
