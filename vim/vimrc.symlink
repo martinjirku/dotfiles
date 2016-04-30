@@ -2,3 +2,18 @@ syntax on
 
 " Wrap gitcommit file types at the appropriate length
 filetype indent plugin on
+
+
+set number "This turns on line numbering
+set relativenumber "This turns on relative numbering
+set numberwidth=4 "Set the line numbers to 4 spaces
+set tabstop=2
+
+
+"Autoreload the .vimrc file
+augroup reload_vimrc " {
+	autocmd!
+	autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
+        
