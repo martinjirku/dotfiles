@@ -6,7 +6,7 @@ filetype indent plugin on
 
 set number "This turns on line numbering
 set relativenumber "This turns on relative numbering
-set numberwidth=4 "Set the line numbers to 4 spaces
+set numberwidth=2 "Set the line numbers to 4 spaces
 set tabstop=2
 
 
@@ -16,4 +16,11 @@ augroup reload_vimrc " {
 	autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
-        
+nmap <UP> dd2kp 
+nmap <DOWN> ddp
+nmap <LEFT> <Nop>
+nmap <RIGHT> <Nop>
+imap <UP> <Nop>
+imap <DOWN> <Nop>
+imap <RIGHT> <Nop>
+imap <LEFT> <Nop>

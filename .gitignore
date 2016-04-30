@@ -10,3 +10,4 @@ atom.symlink/themes
 git/gitconfig.local.symlink
 .*.swp
 zsh/zsh-git-prompt
+vim.symlink/bundle/*/*
