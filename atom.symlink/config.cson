@@ -18,6 +18,11 @@
   "tool-bar":
     fullWidth: false
     iconSize: "16px"
+  "vim-mode-plus":
+    highlightSearch: true
+    ignoreCaseForSearch: true
+    incrementalSearch: true
+    useClipboardAsDefaultRegister: true
   welcome:
     showOnStartup: false
 ".clojure.source":
