@@ -4,6 +4,7 @@ tap 'homebrew/bundle'
 tap 'aspnet/dnx'
 tap 'caskroom/versions'
 
+brew 'coreutils'
 brew 'libgit2'
 brew 'openssl'
 brew 'readline'
