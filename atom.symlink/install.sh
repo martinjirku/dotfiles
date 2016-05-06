@@ -1,19 +1,26 @@
-#!/bin/sh
-
+i () {
+    local package=$1
+    if [[ ! -d "$HOME/.atom/packages/$package" ]]
+    then
+        apm install $package --verbose
+    else
+        printf "package already installed: \t $package \n"
+    fi
+}
 
 #
-apm install Parinfer
-apm install atom-handlebars
-apm install atom-ternjs
-apm install auto-detect-indentation
-apm install docblockr
-apm install docs-snippets
-apm install highlight-selected
-apm install ink
-apm install jsdoc-generator
-apm install lisp-paredit
-apm install proto-repl
-apm install proto-repl-charts
-apm install set-syntax
-apm install turbo-javascript
-apm install vim-mode-plus
+i Parinfer
+i atom-handlebars
+i atom-ternjs
+i auto-detect-indentation
+i docblockr
+i docs-snippets
+i highlight-selected
+i ink
+i jsdoc-generator
+i lisp-paredit
+i proto-repl
+i proto-repl-charts
+i set-syntax
+i turbo-javascript
+i vim-mode-plus

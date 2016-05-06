@@ -1,11 +1,12 @@
 syntax on
 
 set nocompatible
-filetype off "required for Vundle.vim 
+filetype off "required for Vundle.vim
 
 
 " Setup the Vundle.vim
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -40,7 +41,7 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 " Mapping
 
-nmap <UP> dd2kp 
+nmap <UP> dd2kp
 nmap <DOWN> ddp
 nmap <LEFT> <Nop>
 nmap <RIGHT> <Nop>
