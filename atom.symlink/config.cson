@@ -5,7 +5,7 @@
       "base16-tomorrow-dark-theme"
     ]
   editor:
-    fontSize: 13
+    fontSize: 11
     invisibles: {}
     showInvisibles: true
     zoomFontWhenCtrlScrolling: true
