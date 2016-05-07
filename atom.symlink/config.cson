@@ -18,6 +18,8 @@
   "tool-bar":
     fullWidth: false
     iconSize: "16px"
+  "tree-view":
+    hideVcsIgnoredFiles: true
   "vim-mode-plus":
     highlightSearch: true
     ignoreCaseForSearch: true

@@ -1,1 +1,3 @@
-$(brew --prefix nvm)/nvm-exec install 6.1.0
+where nvm
+#.nvm/nvm-exec install
+#$(brew --prefix nvm)/nvm-exec install
