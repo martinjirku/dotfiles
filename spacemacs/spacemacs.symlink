@@ -250,7 +250,8 @@ values."
    js2-strict-inconsistent-return-warning nil
    js2-strict-var-hides-function-arg-warning nil
    js2-strict-var-redeclaration-warning nil
-
+   flycheck-disabled-checkers '()
+   flycheck-checkers '()
    ;; web-mode
    css-indent-offset 2
    web-mode-markup-indent-offset 2
@@ -264,13 +265,13 @@ values."
   (add-to-list 'auto-mode-alist '("\\.jsx$" . javascript-mode))
   ;; Flycheck mode configuration
   (setq-default
-   flycheck-disabled-checkers (append (remove 'javascript-eslint (append '() flycheck-disabled-checkers))
+   flycheck-disabled-checkers (append (remove 'javascript-eslint flycheck-disabled-checkers)
                                       '(javascript-jshint
                                         javascript-standard
                                         javascript-gjslint
                                         javascript-jscs))
    javascript-eslint t
-   flycheck-checkers (append (append '() flycheck-checkers) '(javascript-eslint))
+   flycheck-checkers (append flycheck-checkers '(javascript-eslint))
    )
   ;; (flycheck-add-mode 'javascript-eslint 'js2-mode)
   ;; (flycheck-add-mode 'javascript-eslint 'mode)
