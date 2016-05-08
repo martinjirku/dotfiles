@@ -45,7 +45,9 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+	 '(
+     smart-tab)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -250,6 +252,9 @@ values."
    js2-strict-inconsistent-return-warning nil
    js2-strict-var-hides-function-arg-warning nil
    js2-strict-var-redeclaration-warning nil
+
+   indent-tabs-mode t
+
    flycheck-disabled-checkers '()
    flycheck-checkers '()
    ;; web-mode
@@ -263,6 +268,11 @@ values."
   "Javascript configuration"
   (message "[MJ] - mj/config/javascript layer")
   (add-to-list 'auto-mode-alist '("\\.jsx$" . javascript-mode))
+  ; hooks:
+  (add-hook 'js2-mode-hook 'flycheck-mode)
+  (add-hook 'js2-mode-hook 'smart-tab-mode)
+  (add-hook 'js2-mode-hook 'whitespace-mode)
+	(add-hook 'js2-mode-hook 'linum-relative-mode)
   ;; Flycheck mode configuration
   (setq-default
    flycheck-disabled-checkers (append (remove 'javascript-eslint flycheck-disabled-checkers)
@@ -272,15 +282,20 @@ values."
                                         javascript-jscs))
    javascript-eslint t
    flycheck-checkers (append flycheck-checkers '(javascript-eslint))
+   indent-tabs-mode t
+   ;; flycheck init creation reset
    )
-  ;; (flycheck-add-mode 'javascript-eslint 'js2-mode)
-  ;; (flycheck-add-mode 'javascript-eslint 'mode)
   (with-eval-after-load 'javascript-mode
     (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
     (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
     (add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil))
-    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
+)
+
+(defun mj/config/lisp ()
+	(add-hook 'emacs-lisp-mode-hook 'linum-relative-mode)
+	(add-hook 'lisp-mode-hook 'linum-relative-mode))
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration
@@ -301,7 +316,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq-default
    evil-escape-key-sequence "kj")
-  (mj/config/javascript))
+  (mj/config/javascript)
+	(mj/config/lisp))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
