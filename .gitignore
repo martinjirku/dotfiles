@@ -12,3 +12,4 @@ git/gitconfig.local.symlink
 zsh/zsh-git-prompt
 vim.symlink/bundle/*/*
 emacs.d.symlink
+bower_components
