@@ -40,6 +40,8 @@ values."
      clojure
      html
      yaml
+		 elm
+		 haskell
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -267,12 +269,16 @@ values."
 (defun mj/config/javascript ()
   "Javascript configuration"
   (message "[MJ] - mj/config/javascript layer")
-  (add-to-list 'auto-mode-alist '("\\.jsx$" . javascript-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx$" . react-mode))
+  (add-to-list 'auto-mode-alist '("\\.js$" . react-mode))
+	(add-to-list 'auto-mode-alist '("\\.react\.js$" . react-mode))
   ; hooks:
   (add-hook 'js2-mode-hook 'flycheck-mode)
   (add-hook 'js2-mode-hook 'smart-tab-mode)
-  (add-hook 'js2-mode-hook 'whitespace-mode)
 	(add-hook 'js2-mode-hook 'linum-relative-mode)
+	(add-hook 'react-mode-hook 'flycheck-mode)
+	(add-hook 'react-mode-hook 'smart-tab-mode)
+	(add-hook 'react-mode-hook 'linum-relative-mode)
   ;; Flycheck mode configuration
   (setq-default
    flycheck-disabled-checkers (append (remove 'javascript-eslint flycheck-disabled-checkers)
@@ -295,7 +301,9 @@ values."
 
 (defun mj/config/lisp ()
 	(add-hook 'emacs-lisp-mode-hook 'linum-relative-mode)
-	(add-hook 'lisp-mode-hook 'linum-relative-mode))
+	(add-hook 'lisp-mode-hook 'linum-relative-mode)
+)
+
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration
