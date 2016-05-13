@@ -7,7 +7,7 @@ success () {
 }
 
 
-install () {
+i () {
 	local name=$1
 	if ! type $name &> /dev/null; then
 			tput sc #save cursor
@@ -21,8 +21,8 @@ install () {
 	fi
 }
 
-install "cabal"
-install "stylish-haskell"
-install "hlint"
-install "hasktags"
-install "ghc-mod"
+i "cabal"
+i "stylish-haskell"
+i "hlint"
+i "hasktags"
+i "ghc-mod"
