@@ -1,5 +1,5 @@
 export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+source "$(/usr/local/bin/brew --prefix nvm)/nvm.sh"
 
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -11,4 +11,3 @@ load-nvmrc() {
   fi
 }
 add-zsh-hook chpwd load-nvmrc
-load-nvmrc

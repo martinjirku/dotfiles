@@ -21,6 +21,7 @@ brew 'mercurial'
 brew 'vim'
 brew 'macvim'
 brew 'mc'
+brew 'yarn'
 
 cask '1password'
 cask 'atom'

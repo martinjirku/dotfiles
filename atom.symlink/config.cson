@@ -1,18 +1,51 @@
 "*":
   core:
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".flowconfig"
+      ]
+      "source.json": [
+        ".arcconfig"
+        "BUCK.autodeps"
+      ]
+      "source.php": [
+        ".php"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
+    disabledPackages: [
+      "tree-view"
+      "linter"
+    ]
+    excludeVcsIgnoredPaths: false
     themes: [
       "atom-dark-ui"
       "base16-tomorrow-dark-theme"
     ]
   editor:
-    fontSize: 11
+    fontSize: 13
     invisibles: {}
     showInvisibles: true
     zoomFontWhenCtrlScrolling: true
   "exception-reporting":
     userId: "e0f77934-8a3c-ef20-a5c7-e74b11d52728"
+  "linter-php":
+    executablePath: "/usr/bin/php"
   "lisp-paredit":
     enabled: false
+  nuclide:
+    installRecommendedPackages: true
+    "nuclide-ctags":
+      disableWithHack: false
+    "nuclide-debugger-php":
+      phpRuntimePath: "/usr/bin/php"
+    "nuclide-file-tree":
+      hideIgnoredNames: false
+    "nuclide-flow":
+      canUseFlowBin: true
+      enableStructuredTypeHints: true
   "one-dark-ui": {}
   "proto-repl":
     autoPrettyPrint: true
@@ -20,7 +53,7 @@
     fullWidth: false
     iconSize: "16px"
   "tree-view":
-    hideVcsIgnoredFiles: true
+    squashDirectoryNames: true
   "vim-mode-plus":
     highlightSearch: true
     ignoreCaseForSearch: true
@@ -28,6 +61,10 @@
     useClipboardAsDefaultRegister: true
   welcome:
     showOnStartup: false
+".ansi.text":
+  editor:
+    showIndentGuide: true
+    showInvisibles: true
 ".clojure.source":
   editor:
     nonWordCharacters: "()\"':,;~@#$%^&{}[]`"
