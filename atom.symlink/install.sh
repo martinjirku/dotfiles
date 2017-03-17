@@ -22,20 +22,7 @@ i () {
 
 
 #installation
-i Parinfer
 i atom-handlebars
-i atom-ternjs
 i auto-detect-indentation
-i docblockr
-i docs-snippets
 i highlight-selected
-i ink
 i jsdoc-generator
-i lisp-paredit
-i proto-repl
-i proto-repl-charts
-i set-syntax
-i turbo-javascript
-#i vim-mode-plus
-i ide-haskell
-i haskell-grammar
