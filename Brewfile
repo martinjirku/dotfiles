@@ -22,6 +22,7 @@ brew 'macvim'
 brew 'mc'
 brew 'yarn'
 brew 'gdb'
+brew 'snappy'
 
 cask '1password'
 cask 'atom'

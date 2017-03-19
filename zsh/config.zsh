@@ -11,6 +11,9 @@ fpath=($ZSH/functions $fpath)
 
 autoload -U $ZSH/functions/*(:t)
 
+# export LIBRARY_PATH because of the Rust did not locate lsnappy library
+export LIBRARY_PATH="/usr/local/lib"
+
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
