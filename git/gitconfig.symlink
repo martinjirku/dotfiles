@@ -20,7 +20,7 @@
 [apply]
         whitespace = nowarn
 [mergetool]
-        keepBackup = false
+	keepBackup = false
 [difftool]
         prompt = false
 [help]
@@ -42,3 +42,12 @@
 	email = MJirku2@sk.ibm.com
 [commit]
 	template = /Users/martinjirku/.stCommitMsg
+[diff]
+	tool = /Applications/p4merge.app/Contents/MacOS/p4merge
+[difftool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE\n
+[mergetool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED\n
+	trustExitCode = false
+[merge]
+	tool = p4mergetool
