@@ -1,0 +1,5 @@
+#!/bin/sh
+export COMPASS=`which compass`
+export NPM=`which npm`
+cd /opt/kcdev/KC20-repo/kc-web/
+/opt/kcdev/Eclipse.app/Contents/MacOS/eclipse -data /opt/kcdev/KC20 >/dev/null 2>&1 & /usr/local/bin/code .

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /opt/kcdev/KC20-repo/kc-web/
+/opt/wlp/bin/server stop server_blueid
+/opt/wlp/bin/server run server_blueid & yarn watch & yarn watch:js

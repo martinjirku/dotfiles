@@ -9,4 +9,3 @@ then
   alias la='gls -A --color'
 fi
 
-alias kc="atom /opt/kcdev/KC18/kc-web/"

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+function cleanup {
+  echo
+  echo
+  echo
+  echo
+  echo Server is stopping...
+  echo
+  echo
+  echo
+  echo
+  /opt/wlp/bin/server stop server_blueid
+}
+trap cleanup INT
+trap cleanup EXIT
+
+cd /opt/kcdev/KC20-repo/kc-web/
+/opt/wlp/bin/server run server_blueid & yarn watch & yarn watch:js

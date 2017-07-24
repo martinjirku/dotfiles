@@ -1,0 +1,11 @@
+#!/bin/bash
+MY_BRANCH="$1"
+if [ -z "$2" ]
+then
+  UPSTREAM_BRANCH="$1"
+else
+  UPSTREAM_BRANCH="$2"
+fi
+
+echo Creating Pull request from origin/"$MY_BRANCH" to upstream/"$UPSTREAM_BRANCH"
+open -a /usr/local/Caskroom/google-chrome/latest/Google\ Chrome.app/ `echo https://github.ibm.com/IBMKC/KC2.0/compare/"$UPSTREAM_BRANCH"...MJirku2:"$MY_BRANCH"`
