@@ -1,8 +1,14 @@
 #!/bin/bash
-MY_BRANCH="$1"
+if [ -z "$1" ]
+then
+  MY_BRANCH=`git branch | grep \* | cut -d ' ' -f2`
+else
+  MY_BRANCH=$1
+fi
+
 if [ -z "$2" ]
 then
-  UPSTREAM_BRANCH="$1"
+  UPSTREAM_BRANCH=$MY_BRANCH
 else
   UPSTREAM_BRANCH="$2"
 fi
