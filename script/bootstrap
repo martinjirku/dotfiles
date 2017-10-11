@@ -142,7 +142,6 @@ install_dotfiles
 
 #other initialization
 source $DOTFILES_ROOT/zsh/init.sh
-source $DOTFILES_ROOT/vim.symlink/init.sh
 
 # If we're on a Mac, let's install and setup homebrew.
 if [ "$(uname -s)" == "Darwin" ]

@@ -23,6 +23,8 @@ brew 'yarn'
 brew 'gdb'
 brew 'snappy'
 brew 'sdl2'
+brew 'elixir'
+brew 'postgres'
 
 cask '1password'
 cask 'firefox'
