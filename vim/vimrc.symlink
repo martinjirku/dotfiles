@@ -1,0 +1,36 @@
+" syntax
+syntax enable
+
+" colors
+colorscheme monokai 
+
+" TABS
+set tabstop=2 " number of visual spaces per TAB
+set softtabstop=2 " number of spaces in tab when editing
+set expandtab "  tabs are spaces
+
+" UI config
+set number " show line numbers
+set showcmd "  show command in bottom bar
+set cursorline " highlihgt current line
+filetype indent on " load filetype-specific indent files
+set wildmenu " visual autocomplete for command menu
+set lazyredraw " redraw screen only we need to, for prevent flickering
+set showmatch " highlight matching [{()}]
+
+" Searching
+set incsearch " search as characters are enetered
+set hlsearch " highlight matches
+    " mapping: turn off search highlight
+noremap <leader><space> :nohlsearch<CR>
+
+" Folding
+set foldenable " enable folding
+set foldlevelstart=10 " open most folds by default
+    " space open/closes folds
+" noremap <space> za
+set foldmethod=indent
+" Keyboard and shortcuts
+let mapleader=","
+inoremap jk <esc> " map jk to <esc> because mostly you do not need this one. 
+noremap <leader>a :Ag
