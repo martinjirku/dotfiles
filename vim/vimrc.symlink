@@ -1,3 +1,6 @@
+" Keyboard and shortcuts
+let mapleader=","
+inoremap jk <esc> " map jk to <esc> because mostly you do not need this one. 
 " syntax
 syntax enable
 
@@ -30,7 +33,3 @@ set foldlevelstart=10 " open most folds by default
     " space open/closes folds
 " noremap <space> za
 set foldmethod=indent
-" Keyboard and shortcuts
-let mapleader=","
-inoremap jk <esc> " map jk to <esc> because mostly you do not need this one. 
-noremap <leader>a :Ag
