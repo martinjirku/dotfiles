@@ -1,6 +1,6 @@
+[submodule "vim.symlink/pack/bundle/start/vim-syntastic"]
+	path = vim.symlink/pack/bundle/start/vim-syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "vim.symlink/pack/bundle/start/vim-elixir"]
 	path = vim.symlink/pack/bundle/start/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
-[submodule "vim.symlink/pack/bundle/start/vim-syntastic"]
-	path =vim.symlink/pack/bundle/start/vim-syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
