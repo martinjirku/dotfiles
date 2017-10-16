@@ -4,3 +4,12 @@
 [submodule "vim.symlink/pack/bundle/start/vim-elixir"]
 	path = vim.symlink/pack/bundle/start/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule "vim.symlink/pack/bundle/start/vim-fugitive"]
+	path = vim.symlink/pack/bundle/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim.symlink/pack/bundle/start/ctrlp.vim"]
+	path = vim.symlink/pack/bundle/start/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim
+[submodule "vim.symlink/pack/bundle/start/vim-airline"]
+	path = vim.symlink/pack/bundle/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
