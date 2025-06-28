@@ -23,3 +23,15 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ${ZDOTDIR:-~}/install_brew_packages.zsh
 
+
+# SKDMAN https://sdkman.io/install
+# helps to manage jdk, sdk and gradle version
+source "/Users/martinjirku/.sdkman/bin/sdkman-init.sh"
+
+# PATH
+# export PATH=$PATH:$HOME/dev/Odin
+PATH=$PATH:$HOME/go/bin
+PATH=$PATH:/usr/local/go/bin/ 
+# man podman-compose
+export PODMAN_COMPOSE_PROVIDER=/usr/local/bin/docker-compose
+export PODMAN_COMPOSE_WARNING_LOGS=false

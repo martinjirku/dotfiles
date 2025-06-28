@@ -1,3 +1,5 @@
+# source ${ZDOTDIR:-~}/zsh-completions/zsh-completions.plugin.zsh
+fpath=(${ZDOTDIR:-~}/zsh-completions/src $fpath)
 # Load completions
 autoload -U compinit && compinit
 
