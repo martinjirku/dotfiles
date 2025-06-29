@@ -1,6 +1,6 @@
 [submodule "plugins/zsh-completions"]
-	path = plugins/zsh-completions
+	path = zsh/plugins/zsh-completions
 	url = git@github.com:zsh-users/zsh-completions.git
 [submodule "plugins/ohmyzsh"]
-	path = plugins/ohmyzsh
+	path = zsh/plugins/ohmyzsh
 	url = git@github.com:ohmyzsh/ohmyzsh.git
