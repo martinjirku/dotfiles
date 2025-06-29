@@ -6,5 +6,3 @@ alias la='ls -a'
 alias lla='ls -la'
 alias grep='grep --color=auto'
 alias mv='mv -i'
-
-source ${ZDOTDIR:-~}/plugins/ohmyzsh/plugins/git/git.plugin.zsh
