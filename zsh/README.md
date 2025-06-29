@@ -1,7 +1,7 @@
 # Install
 
 ```zsh
-git clone https://github.com/martinjirku/dotfiles.git ~/.dotfiles
+git clone git@github.com:martinjirku/zsh.git ~/.dotfiles
 cd .dotfiles
 git submodule update --init --recursive
 mv ~/.zshrc{'','.bak'}
