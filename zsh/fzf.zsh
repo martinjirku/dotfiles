@@ -1,0 +1,51 @@
+# export $FZF_CTRL_T_COMMAND = 
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='**'
+
+# Options to fzf command
+export FZF_DEFAULT_COMMAND='fd --type f'
+
+# Options to fzf command
+export FZF_COMPLETION_OPTS="--style full \
+    --border --padding 1,2 \
+    --border-label ' Find ' --input-label ' Input ' --header-label ' File Type ' \
+    --preview '${ZDOTDIR:-~}/scripts/fzf-preview.zsh {}' \
+    --preview '/Users/martinjirku/.dotfiles/zsh/scripts/fzf-preview.zsh {}' \
+    --bind 'result:transform-list-label:
+        if [[ -z $FZF_QUERY ]]; then
+          echo \" $FZF_MATCH_COUNT items \"
+        else
+          echo \" $FZF_MATCH_COUNT matches for [$FZF_QUERY] \"
+        fi
+        ' \
+    --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}' \
+    --bind 'focus:+transform-header:file --brief {} || echo \"No file selected\"' \
+    # --bind 'ctrl-r:change-list-label( Reloading the list )+reload(sleep 2; git ls-files)' \
+    --color 'border:#aaaaaa,label:#cccccc' \
+    --color 'preview-border:#9999cc,preview-label:#ccccff' \
+    --color 'list-border:#669966,list-label:#99cc99' \
+    --color 'input-border:#996666,input-label:#ffcccc' \
+    --color 'header-border:#6699cc,header-label:#99ccff'
+"
+
+# Options for path completion (e.g. vim **<TAB>)
+export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden'
+
+# Options for directory completion (e.g. cd **<TAB>)
+export FZF_COMPLETION_DIR_OPTS='--walker dir,follow,hidden'
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments ($@) to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'tree -C {} | head -400'   "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview '${ZDOTDIR:-~}/scripts/fzf-preview.zsh {}' "$@" ;;
+  esac
+}
+

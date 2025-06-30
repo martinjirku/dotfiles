@@ -10,6 +10,9 @@ fpath=(${ZDOTDIR:-~}/functions $fpath)
 
 # for fonts https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
 
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # my configs
 source ${ZDOTDIR:-~}/aliases.zsh
 source ${ZDOTDIR:-~}/aliases.zsh
@@ -17,17 +20,17 @@ source ${ZDOTDIR:-~}/options.zsh
 source ${ZDOTDIR:-~}/history.zsh
 source ${ZDOTDIR:-~}/completion.zsh
 source ${ZDOTDIR:-~}/git.zsh
+source ${ZDOTDIR:-~}/fzf.zsh
+
 # TODO: work in progress
 # source ${ZDOTDIR:-~}/prompt.zsh
 
 PS1=$'%F{blue}%B%~%b%f ${vcs_info_msg_0_}%F{green}❯%f '
 RPS1=$'%(?.%F{green}●.%F{red}●[%?]%f) %F{blue}%D%f %F{green}%*%f'
 
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ${ZDOTDIR:-~}/install_brew_packages.zsh
-
+source <(fzf --zsh)
 
 # SKDMAN https://sdkman.io/install
 # helps to manage jdk, sdk and gradle version
