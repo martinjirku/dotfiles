@@ -6,3 +6,5 @@ alias la='ls -a'
 alias lla='ls -la'
 alias grep='grep --color=auto'
 alias mv='mv -i'
+alias rfz=${ZDOTDIR:-~}/scripts/rfz.zsh
+alias editor=code

@@ -13,8 +13,8 @@ fpath=(${ZDOTDIR:-~}/functions $fpath)
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+export EDITOR=$(which code)
 # my configs
-source ${ZDOTDIR:-~}/aliases.zsh
 source ${ZDOTDIR:-~}/aliases.zsh
 source ${ZDOTDIR:-~}/options.zsh
 source ${ZDOTDIR:-~}/history.zsh
