@@ -7,3 +7,5 @@ bat
 tree
 fd
 ripgrep
+neovim
+lua
