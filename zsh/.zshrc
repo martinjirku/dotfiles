@@ -4,7 +4,6 @@ autoload -Uz compaudit compinit promptinit
 compinit
 # plugins
 source ${ZDOTDIR:-~}/plugins/ohmyzsh/plugins/git/git.plugin.zsh
-
 fpath=(${ZDOTDIR:-~}/functions $fpath)
 
 # for fonts https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
@@ -19,8 +18,8 @@ source ${ZDOTDIR:-~}/history.zsh
 source ${ZDOTDIR:-~}/completion.zsh
 source ${ZDOTDIR:-~}/git.zsh
 source ${ZDOTDIR:-~}/fzf.zsh
-source ${ZDOTDIR:-~}/scripts/ports.zsh
-source ${ZDOTDIR:-~}/scripts/dj.zsh
+source ${ZDOTDIR:-~}/functions/ports.zsh
+source ${ZDOTDIR:-~}/functions/dj.zsh
 
 # TODO: work in progress
 # source ${ZDOTDIR:-~}/prompt.zsh
@@ -38,8 +37,9 @@ source "/Users/martinjirku/.sdkman/bin/sdkman-init.sh"
 
 # PATH
 # export PATH=$PATH:$HOME/dev/Odin
+PATH=$PATH:${ZDOTDIR:-~}/scripts
 PATH=$PATH:$HOME/go/bin
-PATH=$PATH:/usr/local/go/bin/ 
+PATH=$PATH:/usr/local/go/bin/
 # man podman-compose
 export PODMAN_COMPOSE_PROVIDER=/usr/local/bin/docker-compose
 export PODMAN_COMPOSE_WARNING_LOGS=false

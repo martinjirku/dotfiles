@@ -41,17 +41,7 @@ if [[ ! $type =~ image/ ]]; then
     exit
   fi
 
-  # Sometimes bat is installed as batcat.
-  if command -v batcat > /dev/null; then
-    batname="batcat"
-  elif command -v bat > /dev/null; then
-    batname="bat"
-  else
-    cat "$1"
-    exit
-  fi
-
-  ${batname} --style="${BAT_STYLE:-numbers}" --color=always --pager=never --highlight-line="${center:-0}" -- "$file"
+  bat --style="${BAT_STYLE:-numbers}" --color=always --pager=never --highlight-line="${center:-0}" -- "$file"
   exit
 fi
 
@@ -79,15 +69,53 @@ elif command -v chafa > /dev/null; then
   chafa -s "$dim" "$file"
   # Add a new line character so that fzf can display multiple images in the preview window
   echo
-
-# 3. If chafa is not found but imgcat is available, use it on iTerm2
-elif command -v imgcat > /dev/null; then
-  # NOTE: We should use https://iterm2.com/utilities/it2check to check if the
-  # user is running iTerm2. But for the sake of simplicity, we just assume
-  # that's the case here.
-  imgcat -W "${dim%%x*}" -H "${dim##*x}" "$file"
+# 4. If chafa is not found but imgcat is available, use it on iTerm2
+# elif command -v imgcat > /dev/null; then
+#   # NOTE: We should use https://iterm2.com/utilities/it2check to check if the
+#   # user is running iTerm2. But for the sake of simplicity, we just assume
+#   # that's the case here. -W "${dim%%x*}" -H "${dim##*x}"
+#   imgcat -W "${dim%%x*}" -H "${dim##*x}" "$file"
+#   echo
+#   exit
+# 3. Use catimg if it is available
+elif command -v catimg > /dev/null; then
+  catimg -w "${dim%%x*}" "$file"
 
 # 4. Cannot find any suitable method to preview the image
 else
+  # If not a file, treat as a command: show help/man for the deepest subcommand possible
+  cmdline="$input"
+  args=(${(z)cmdline})
+
+  for ((i=${#args[@]}; i>0; i--)); do
+    try_cmd=(${args[@]:0:$i})
+    if "${try_cmd[@]}" --help &>/dev/null; then
+      "${try_cmd[@]}" --help | head -40
+      exit
+    fi
+    if "${try_cmd[@]}" -h &>/dev/null; then
+      "${try_cmd[@]}" -h | head -40
+      exit
+    fi
+    manpage="${(j/-/)try_cmd}"
+    if man "$manpage" &>/dev/null; then
+      man "$manpage" | col -bx | head -40
+      exit
+    fi
+    # Try man for just the root command if above fails
+    if [[ $i -eq 1 ]] && man "${try_cmd[1]}" &>/dev/null; then
+      man "${try_cmd[1]}" | col -bx | head -40
+      exit
+    fi
+    # Try help for just the root command
+    if [[ $i -eq 1 ]] && "${try_cmd[1]}" --help &>/dev/null; then
+      "${try_cmd[1]}" --help | head -40
+      exit
+    fi
+    if [[ $i -eq 1 ]] && "${try_cmd[1]}" -h &>/dev/null; then
+      "${try_cmd[1]}" -h | head -40
+      exit
+    fi
+  done
   file "$file"
 fi

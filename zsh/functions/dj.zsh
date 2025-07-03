@@ -131,7 +131,7 @@ function dj() {
                 return 0
             else
                 # Multiple matches, use fzf to select
-                local selected_dir=$(echo "$matches" | fzf --height 40% --reverse --query="$2")
+                local selected_dir=$(echo "$matches" | fzf --query="$2")
                 if [[ -n "$selected_dir" ]]; then
                     cd "$selected_dir"
                     $EDITOR "$selected_dir"
