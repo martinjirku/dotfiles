@@ -8,6 +8,7 @@ tree
 fd
 ripgrep
 neovim
-lua
+luajit
+luarocks
 catimg
 chafa
