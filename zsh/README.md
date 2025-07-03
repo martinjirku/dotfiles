@@ -1,9 +1,8 @@
 # Install
 
 ```zsh
-git clone git@github.com:martinjirku/zsh.git ~/.dotfiles
-cd .dotfiles
+cd .dotfiles/zsh
 git submodule update --init --recursive
 mv ~/.zshrc{'','.bak'}
-echo 'export ZDOTDIR=$HOME/.config/zsh\nsource $ZDOTDIR/.zshrc' > ~/.zshrc
+echo 'export export EDITOR=$(which code)\nexport ZDOTDIR=$HOME/.config/zsh\nsource $ZDOTDIR/.zshrc' > ~/.zshrc
 ```

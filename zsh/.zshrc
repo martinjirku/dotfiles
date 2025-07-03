@@ -5,7 +5,6 @@ compinit
 # plugins
 source ${ZDOTDIR:-~}/plugins/ohmyzsh/plugins/git/git.plugin.zsh
 
-
 fpath=(${ZDOTDIR:-~}/functions $fpath)
 
 # for fonts https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
@@ -13,7 +12,6 @@ fpath=(${ZDOTDIR:-~}/functions $fpath)
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export EDITOR=$(which code)
 # my configs
 source ${ZDOTDIR:-~}/aliases.zsh
 source ${ZDOTDIR:-~}/options.zsh
@@ -21,6 +19,8 @@ source ${ZDOTDIR:-~}/history.zsh
 source ${ZDOTDIR:-~}/completion.zsh
 source ${ZDOTDIR:-~}/git.zsh
 source ${ZDOTDIR:-~}/fzf.zsh
+source ${ZDOTDIR:-~}/scripts/ports.zsh
+source ${ZDOTDIR:-~}/scripts/dj.zsh
 
 # TODO: work in progress
 # source ${ZDOTDIR:-~}/prompt.zsh

@@ -1,3 +1,4 @@
+export GIT_PAGER="LESS -FRXK"
 
 autoload -Uz vcs_info
 precmd() { vcs_info }
@@ -12,7 +13,6 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:git:*' formats '%F{blue}%b%f%m'
 zstyle ':vcs_info:git:*' actionformats "%F{blue}%b|%a%f%m"
-
 
 zstyle ':vcs_info:git*+set-message:*' hooks git-st
 # https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples#L180
@@ -43,4 +43,36 @@ function +vi-git-st() {
 
     hook_com[misc]+=" ${(j: :)gitstatus}"
 }
+
+git-graph() {
+  git log --all --graph --oneline --decorate --color
+}
+
+git-linehist() {
+  git log -L "$1" --color=always --pretty=format:'%n%C(34)+------------------------------------------------------------------------------+%n%C(34)|%C(reset) %C(yellow)commit %H%C(reset)%n%C(34)|%C(reset) Author: %an <%ae>%n%C(34)|%C(reset) Date:   %ad%n%C(34)+------------------------------------------------------------------------------+%C(reset)' --date=iso -p "${@:2}" |
+  awk '
+    BEGIN { border = "\033[34m+------------------------------------------------------------------------------+\033[0m" }
+    {
+      if ($0 ~ /^\033\[34m\+\-\-+/) {
+        print $0
+        in_commit = 1
+      } else if ($0 ~ /^commit / || $0 ~ /^Author:/ || $0 ~ /^Date:/) {
+        print $0
+      } else if ($0 ~ /^\033\[34m\+\-\-+/ && in_commit) {
+        print $0
+        in_commit = 0
+      } else if ($0 ~ /^diff/ || $0 ~ /^@@/ || $0 ~ /^index /) {
+        print "\033[34m|\033[0m " $0
+      } else if ($0 ~ /^$/) {
+        print "\033[34m|\033[0m"
+      } else {
+        print "\033[34m|\033[0m " $0
+      }
+    }
+    END { print border }
+  '
+}
+
+# ALIASES:
+alias glh=git-linehist
 
