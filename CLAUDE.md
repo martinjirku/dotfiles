@@ -56,14 +56,18 @@ This script reads from `zsh/brew.list` and installs missing packages via Homebre
 
 ### Structure
 - `init.lua`: Entry point, loads lazy.nvim configuration
-- `lua/config/lazy.lua`: Lazy.nvim bootstrap and setup
+- `lua/config/`: LazyVim configuration files
+  - `lazy.lua`: Lazy.nvim bootstrap and LazyVim setup
+  - `options.lua`: Neovim options configuration
+  - `keymaps.lua`: Custom keymaps
+  - `autocmds.lua`: Auto commands
 - `lua/plugins/`: Plugin configurations
-  - `colorscheme.lua`: Color scheme setup
-  - `telescope.lua`: Telescope fuzzy finder
-  - `treesitter.lua`: Tree-sitter syntax highlighting
+  - `colorscheme.lua`: GitHub dark theme configuration
+  - `treesitter.lua`: Tree-sitter syntax highlighting with language support
+  - `example.lua`: Example plugin configurations (disabled by default)
 
 ### Plugin Manager
-Uses Lazy.nvim for plugin management with automatic installation and updates.
+Uses LazyVim (built on Lazy.nvim) for comprehensive plugin management with automatic installation, updates, and sensible defaults. The configuration follows LazyVim's structure and conventions.
 
 ## Development Workflow
 
@@ -109,3 +113,14 @@ Essential tools installed via `brew.list`:
 - `neovim`: Text editor
 - `tree`: Directory tree display
 - `jq`, `yq`: JSON/YAML processors
+
+## Recent Changes
+
+### LazyVim Migration
+The Neovim configuration has been migrated from a custom Lazy.nvim setup to LazyVim:
+- **LazyVim Integration**: Now uses LazyVim as the base configuration with `lazyvim.plugins` imported
+- **GitHub Theme**: Switched from tokyonight to github-nvim-theme with dark variant
+- **Plugin Structure**: Reorganized to follow LazyVim conventions
+- **Configuration Files**: Added standard LazyVim config files (options.lua, keymaps.lua, autocmds.lua)
+- **Tree-sitter**: Enhanced with additional language support including Go, TypeScript, and more
+- **Performance**: Optimized with disabled unnecessary runtime plugins
