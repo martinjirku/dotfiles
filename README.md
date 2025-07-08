@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-git clone --recurse-submodules git@github.com:martinjirku/zsh.git ~/.dotfiles
+git clone --recurse-submodules git@github.com:martinjirku/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 git submodule update --init --recursive
 
