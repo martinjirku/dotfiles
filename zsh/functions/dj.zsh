@@ -96,28 +96,18 @@ function dj() {
         echo "Added to jump list: $dir_to_add"
         return 0
     fi
-    local dir=$(grep -v "^#" "$config_file" | fzf --query="$1" --select-1 --delimiter="/" --header="Search by directory name" --with-nth=1..-1 --nth=-1)
-   # Handle edit subcommand
+
+    # Handle edit subcommand
     if [[ "$1" == "edit" ]]; then
         if [[ -z "$EDITOR" ]]; then
-            echo "Error: \$EDITOR environment variable not set"
+            echo "Error: $EDITOR environment variable not set"
             echo "Please set your preferred editor with: export EDITOR=your_editor"
             return 1
         fi
         
         # If a second argument is provided, use it for directory search
         if [[ -n "$2" ]]; then
-            # First check for exact folder name match
-            local exact_match=$(grep -v "^#" "$config_file" | xargs -L1 bash -c 'if [[ "$(basename "$0")" == "'$2'" ]]; then echo "$0"; fi')
-            
-            # If there's an exact match to folder name, use it immediately
-            if [[ -n "$exact_match" ]]; then
-                cd "$exact_match"
-                $EDITOR "$exact_match"
-                return 0
-            fi
-            
-            # Otherwise search for partial matches
+            # Search for partial matches (case-insensitive)
             local matches=$(grep -i "$2" "$config_file" | grep -v "^#")
             local match_count=$(echo "$matches" | grep -v "^$" | wc -l)
             
@@ -125,9 +115,9 @@ function dj() {
                 echo "No matching directories found for '$2'"
                 return 1
             elif [[ $match_count -eq 1 ]]; then
-                # Single match, edit directly
-                cd "$selected_dir"
-                $EDITOR "$matches"
+                local dir=$(echo "$matches" | head -n1)
+                cd "$dir"
+                $EDITOR "$dir"
                 return 0
             else
                 # Multiple matches, use fzf to select
@@ -136,49 +126,82 @@ function dj() {
                     cd "$selected_dir"
                     $EDITOR "$selected_dir"
                     return 0
+                else
+                    echo "No directory selected"
+                    return 1
                 fi
             fi
         else
-            if [[ -n "$selected_dir" ]]; then
-                cd "$selected_dir"
-                $EDITOR "$selected_dir"
+            # No argument, interactive selection from all
+            local matches=$(grep -v "^#" "$config_file")
+            local match_count=$(echo "$matches" | grep -v "^$" | wc -l)
+            if [[ $match_count -eq 0 ]]; then
+                echo "No directories in jump list."
+                return 1
+            elif [[ $match_count -eq 1 ]]; then
+                local dir=$(echo "$matches" | head -n1)
+                cd "$dir"
+                $EDITOR "$dir"
                 return 0
+            else
+                local selected_dir=$(echo "$matches" | fzf)
+                if [[ -n "$selected_dir" ]]; then
+                    cd "$selected_dir"
+                    $EDITOR "$selected_dir"
+                    return 0
+                else
+                    echo "No directory selected"
+                    return 1
+                fi
             fi
         fi
-        
         return 0
     fi
 
-    # If no argument is provided, use fzf to select
+    # Main navigation logic
     if [[ -z "$1" ]]; then
-        cd "$selected_dir"
-    else
-        # If argument is provided, first check for exact folder name match
-        local exact_match=$(grep -v "^#" "$config_file" | xargs -L1 bash -c 'if [[ "$(basename "$0")" == "'$1'" ]]; then echo "$0"; fi')
-        
-        # If there's an exact match to folder name, use it immediately
-        if [[ -n "$exact_match" ]]; then
-            cd "$exact_match"
-            return
+        # No argument, interactive selection from all
+        local matches=$(grep -v "^#" "$config_file")
+        local match_count=$(echo "$matches" | grep -v "^$" | wc -l)
+        if [[ $match_count -eq 0 ]]; then
+            echo "No directories in jump list."
+            return 1
+        elif [[ $match_count -eq 1 ]]; then
+            local dir=$(echo "$matches" | head -n1)
+            cd "$dir"
+            return 0
+        else
+            local selected_dir=$(echo "$matches" | fzf)
+            if [[ -n "$selected_dir" ]]; then
+                cd "$selected_dir"
+                return 0
+            else
+                echo "No directory selected"
+                return 1
+            fi
         fi
-
+    else
+        # Search for partial matches (case-insensitive)
         local matches=$(grep -i "$1" "$config_file" | grep -v "^#")
         local match_count=$(echo "$matches" | grep -v "^$" | wc -l)
         
-        if [[ $match_count -eq 1 ]]; then
-            # Single match, go directly
-            cd "$matches"
-            return 0
-        fi
-        basename=$(which basename)
-        # If argument is provided, try to match it
-        dir=$(echo $dir | cut -d':' -f2)
-        if [[ -n "$dir" ]]; then
-            echo "Navigating to: $dir"
-            cd "$dir"
-        else
-            echo "No directory selected"
+        if [[ $match_count -eq 0 ]]; then
+            echo "No matching directories found for '$1'"
             return 1
+        elif [[ $match_count -eq 1 ]]; then
+            local dir=$(echo "$matches" | head -n1)
+            cd "$dir"
+            return 0
+        else
+            # Multiple matches, use fzf to select
+            local selected_dir=$(echo "$matches" | fzf --query="$1")
+            if [[ -n "$selected_dir" ]]; then
+                cd "$selected_dir"
+                return 0
+            else
+                echo "No directory selected"
+                return 1
+            fi
         fi
     fi
 }
