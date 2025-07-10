@@ -55,14 +55,14 @@ return {
     end
     if provider == "openai" then
       return {
-        provider = "openai",
+        provider = "openwebui",
         providers = {
-          openai = {
-            endpoint = "https://open-webui.prod.cit.bvnt.co/api/chat/completions",
+          openwebui = {
+            __inherited_from = 'openai',
+            endpoint = "https://open-webui.prod.cit.bvnt.co/api",
             model = "claude-sonnet-4",
-            api_key = vim.env.OPENAI_API_KEY,
-            timeout = 30000,
-            method = "POST"
+            api_key_name = "OPENAI_API_KEY"
+            -- api_key = vim.env.OPENAI_API_KEY,
             -- extra_request_body = { 
             --   temperature = 0.75,
             --   max_tokens = 20480,
