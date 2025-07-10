@@ -1,3 +1,20 @@
+-- local curl = require("plenary.curl")
+
+-- local response = curl.post("https://open-webui.prod.cit.bvnt.co/api/chat/completions", {
+--   headers = {
+--     ["Authorization"] = "Bearer " .. vim.env.OPENAI_API_KEY,
+--     ["Content-Type"] = "application/json",
+--   },
+--   body = vim.fn.json_encode({
+--     model = "claude-sonnet-4",
+--     messages = {
+--       { role = "user", content = "hello" }
+--     }
+--   }),
+-- })
+
+-- print("Status:", response.status)
+-- print("Body:", response.body)
 return {
   "yetone/avante.nvim",
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -14,22 +31,47 @@ return {
   version = false, -- Never set this value to "*"! Never!
   ---@module 'avante'
   ---@type avante.Config
-  opts = {
-    -- add any opts here
-    -- for example
-    provider = "claude",
-    providers = {
-      claude = {
-        endpoint = "https://api.anthropic.com",
-        model = "claude-sonnet-4-20250514",
-        timeout = 30000, -- Timeout in milliseconds
-        extra_request_body = {
-          temperature = 0.75,
-          max_tokens = 20480,
+  opts = function()
+    local provider = "claude"
+    if vim.env.OPENAI_API_KEY and vim.env.OPENAI_API_KEY ~= "" then
+      provider = "openai"
+    end
+
+    if provider == "claude" then
+      return {
+        provider = "claude",
+        providers = {
+          claude = {
+            endpoint = "https://api.anthropic.com",
+            model = "claude-sonnet-4-20250514",
+            timeout = 30000, -- Timeout in milliseconds
+            extra_request_body = {
+              temperature = 0.75,
+              max_tokens = 20480,
+            },
+          },
         },
-      },
-    },
-  },
+      }
+    end
+    if provider == "openai" then
+      return {
+        provider = "openai",
+        providers = {
+          openai = {
+            endpoint = "https://open-webui.prod.cit.bvnt.co/api/chat/completions",
+            model = "claude-sonnet-4",
+            api_key = vim.env.OPENAI_API_KEY,
+            timeout = 30000,
+            method = "POST"
+            -- extra_request_body = { 
+            --   temperature = 0.75,
+            --   max_tokens = 20480,
+            -- },
+          },
+        },
+      }
+    end
+  end,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
