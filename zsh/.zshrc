@@ -20,6 +20,7 @@ source ${ZDOTDIR:-~}/git.zsh
 source ${ZDOTDIR:-~}/fzf.zsh
 source ${ZDOTDIR:-~}/functions/ports.zsh
 source ${ZDOTDIR:-~}/functions/dj.zsh
+source ${ZDOTDIR:-~}/plugins/command-time.zsh
 
 # TODO: work in progress
 # source ${ZDOTDIR:-~}/prompt.zsh
