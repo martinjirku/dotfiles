@@ -1,18 +1,3 @@
--- local curl = require("plenary.curl")
-
--- local response = curl.post("https://open-webui.prod.cit.bvnt.co/api/chat/completions", {
---   headers = {
---     ["Authorization"] = "Bearer " .. vim.env.OPENAI_API_KEY,
---     ["Content-Type"] = "application/json",
---   },
---   body = vim.fn.json_encode({
---     model = "claude-sonnet-4",
---     messages = {
---       { role = "user", content = "hello" }
---     }
---   }),
--- })
-
 -- print("Status:", response.status)
 -- print("Body:", response.body)
 return {
@@ -58,12 +43,12 @@ return {
         provider = "openwebui",
         providers = {
           openwebui = {
-            __inherited_from = 'openai',
+            __inherited_from = "openai",
             endpoint = "https://open-webui.prod.cit.bvnt.co/api",
             model = "claude-sonnet-4",
-            api_key_name = "OPENAI_API_KEY"
+            api_key_name = "OPENAI_API_KEY",
             -- api_key = vim.env.OPENAI_API_KEY,
-            -- extra_request_body = { 
+            -- extra_request_body = {
             --   temperature = 0.75,
             --   max_tokens = 20480,
             -- },
