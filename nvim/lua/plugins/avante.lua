@@ -15,32 +15,56 @@ return {
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   ---@module 'avante'
-  ---@type avante.Config
+  ---@type function|avante.Config
   opts = function()
     local provider = "claude"
     if vim.env.OPENAI_API_KEY and vim.env.OPENAI_API_KEY ~= "" then
       provider = "openai"
     end
 
+    -- Common configuration shared between providers
+    local common_config = {
+      behaviour = {
+        auto_suggestions = true, -- Enable inline suggestions
+        auto_set_keymaps = true, -- Automatically set keymaps
+        auto_set_highlight_group = true, -- Enable highlighting
+      },
+      suggestion = {
+        debounce = 400, -- Delay before showing suggestions (ms) - reduced for faster response
+        throttle = 400, -- Throttle suggestion requests (ms) - reduced for faster response
+      },
+      mappings = {
+        suggestion = {
+          accept = "<M-l>", -- Alt+L to accept suggestion
+          next = "<M-]>", -- Alt+] for next suggestion
+          prev = "<M-[>", -- Alt+[ for previous suggestion
+          dismiss = "<C-]>", -- Ctrl+] to dismiss suggestion
+        },
+      },
+    }
+
     if provider == "claude" then
-      return {
+      return vim.tbl_deep_extend("force", common_config, {
         provider = "claude",
+        auto_suggestions_provider = "claude", -- Enable auto suggestions with Claude
         providers = {
           claude = {
             endpoint = "https://api.anthropic.com",
-            model = "claude-sonnet-4-20250514",
+            model = "claude-3-5-sonnet-20241022", -- Updated to recommended model
             timeout = 30000, -- Timeout in milliseconds
             extra_request_body = {
               temperature = 0.75,
-              max_tokens = 20480,
+              max_tokens = 4096, -- Reduced for faster response in suggestions
             },
           },
         },
-      }
+      })
     end
+
     if provider == "openai" then
-      return {
+      return vim.tbl_deep_extend("force", common_config, {
         provider = "openwebui",
+        auto_suggestions_provider = "openwebui", -- Enable auto suggestions with OpenAI
         providers = {
           openwebui = {
             __inherited_from = "openai",
@@ -48,13 +72,13 @@ return {
             model = "claude-sonnet-4",
             api_key_name = "OPENAI_API_KEY",
             -- api_key = vim.env.OPENAI_API_KEY,
-            -- extra_request_body = {
-            --   temperature = 0.75,
-            --   max_tokens = 20480,
-            -- },
+            extra_request_body = {
+              temperature = 0.75,
+              max_tokens = 4096,
+            },
           },
         },
-      }
+      })
     end
   end,
   dependencies = {
