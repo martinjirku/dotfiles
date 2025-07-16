@@ -1,6 +1,8 @@
 # LazyVim Keybindings Cheatsheet
 
-> **Note:** Default `<leader>` is `<space>` (spacebar). LazyVim uses which-key.nvim to show available keymaps when you press any key combination. [LazyVim +2](https://lazyvim.github.io/keymaps? Error Navigation
+> **Note:** Default `<leader>` is `<space>` (spacebar). LazyVim uses which-key.nvim to show available keymaps when you press any key combination. [LazyVim +2](https://lazyvim.github.io/keymaps
+
+### Error Navigation
 | Keybinding | Title | Description |
 |------------|-------|-------------|
 | `]d/[d` | Next/previous diagnostic | Navigate diagnostics |
