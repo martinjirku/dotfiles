@@ -2,7 +2,60 @@
 
 > **Note:** Default `<leader>` is `<space>` (spacebar). LazyVim uses which-key.nvim to show available keymaps when you press any key combination. [LazyVim +2](https://lazyvim.github.io/keymaps
 
-### Error Navigation
+## Navigation
+
+### Basic Cursor Movement
+| Keybinding | Title | Description |
+|------------|-------|-------------|
+| h/j/k/l | Move Cursor | Move left/down/up/right |
+|0 | Beginning of line | Go to beginning of line
+| $ | End of line | |
+| gg | First Line | |
+| G | Last Line | |
+| % | Matching bracket | |
+
+### Advanced navigation
+| Keybinding | Title | Description |
+|------------|-------|-------------|
+| `<C-u>/<C-d>` | Half page up/down | Move up/down half page |
+| `<C-f>/<C-b>` | Full page up/down | |
+| `<C-o>/<C-i>` | Jump back/forward | |
+| `<C-e>/<C-y>` | Scroll line up/down | |
+| `zz` | Center Cursor | |
+
+### Window Navigation
+| Keybinding | Title | Description |
+|------------|-------|-------------|
+| `<C-h/j/k/l>` | Navigate windows | Go to left/lower/upper/right window |
+| `<C-Up/Down` | Resize height | |
+| `<C-Left/Right>` | Resize width | |
+| `<leader>wd` | Delete window | |
+| `<leader>-` | Split horizontal | |
+| `<leader>\|` | Split vertical | |
+
+### Buffer Management
+| Keybinding | Title | Description |
+|------------|-------|-------------|
+| `<S-h>/<S-I>` | Prev/Next buffer | |
+| `[b/]b` | Previouse/next buffer | |
+| `<leader>bb` | Switch buffer | |
+| `<leader>bd` | Delete buffer | |
+| `<leader>bo` | Delete other buffers | |
+| `<leader>bD` | Delete buffer and window | |
+
+### Tab Management
+
+| Keybinding | Title | Description |
+|------------|-------|-------------|
+| `<leader><tab><tab>` | New Tab | |
+| `<leader><tab>]` | Next Tab | |
+| `<leader><tab>[` | Prev Tab | |
+| `<leader><tab>d` | Close Tab | |
+| `<leader><tab>o` | Close Other Tabs | |
+| `<leader><tab>f` | First Tab | |
+| `<leader><tab>\|` | Last tab | |
+
+### Diagnostics & Error Navigation
 | Keybinding | Title | Description |
 |------------|-------|-------------|
 | `]d/[d` | Next/previous diagnostic | Navigate diagnostics |
