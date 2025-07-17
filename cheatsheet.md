@@ -173,6 +173,7 @@
 | `<A-j>` | Move line down | Move line down |
 | `<A-k>` | Move line up | Move line up |
 | `J` | Join lines | Join current and next line |
+| `gcc` | toggle comment |  |
 | `gco` | Add comment below | Add comment below |
 | `gcO` | Add comment above | Add comment above |
 
