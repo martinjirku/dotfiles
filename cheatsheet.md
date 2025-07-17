@@ -5,14 +5,28 @@
 ## Navigation
 
 ### Basic Cursor Movement
+
 | Keybinding | Title | Description |
 |------------|-------|-------------|
-| h/j/k/l | Move Cursor | Move left/down/up/right |
-|0 | Beginning of line | Go to beginning of line
-| $ | End of line | |
-| gg | First Line | |
-| G | Last Line | |
-| % | Matching bracket | |
+| `h/j/k/l` | Move Cursor | Move left/down/up/right |
+| `0` | Beginning of Line | Go to beginning of line |
+| `^` | First Non-Blank | Go to first non-whitespace character |
+| `$` | End of Line | Go to end of line |
+| `gg` | First Line | Go to first line of file |
+| `G` | Last Line | Go to last line of file |
+| `%` | Matching Bracket | Jump to matching bracket/parenthesis |
+| `w` | Next Word | Move to beginning of next word |
+| `W` | Next WORD | Move to beginning of next WORD (whitespace-separated) |
+| `b` | Previous Word | Move to beginning of previous word |
+| `B` | Previous WORD | Move to beginning of previous WORD |
+| `e` | End of Word | Move to end of current/next word |
+| `E` | End of WORD | Move to end of current/next WORD |
+| `ge` | End Previous Word | Move to end of previous word |
+| `f{char}` | Find Character | Move to next occurrence of character |
+| `F{char}` | Find Backward | Move to previous occurrence of character |
+| `t{char}` | Till Character | Move to just before next occurrence |
+| `T{char}` | Till Backward | Move to just after previous occurrence |
+
 
 ### Advanced navigation
 | Keybinding | Title | Description |
