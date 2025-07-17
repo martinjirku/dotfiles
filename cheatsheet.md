@@ -43,8 +43,17 @@
 | `<leader>bo` | Delete other buffers | |
 | `<leader>bD` | Delete buffer and window | |
 
-### Tab Management
+### IntelliSense Navigation
+| Keybinding | Title | Description |
+|------------|-------|-------------|
+| `<C-n>` | Next item | |
+| `<C-p>` | Previous item | |
+| `<C-d>` | Scroll docs up | |
+| `<C-f>` | Scroll docs down | |
+| `K` | Show documentation | normal mode |
+| `<C-k>` | Show signature | insert mode |
 
+### Tab Management
 | Keybinding | Title | Description |
 |------------|-------|-------------|
 | `<leader><tab><tab>` | New Tab | |
