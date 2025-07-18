@@ -5,14 +5,28 @@
 ## Navigation
 
 ### Basic Cursor Movement
+
 | Keybinding | Title | Description |
 |------------|-------|-------------|
-| h/j/k/l | Move Cursor | Move left/down/up/right |
-|0 | Beginning of line | Go to beginning of line
-| $ | End of line | |
-| gg | First Line | |
-| G | Last Line | |
-| % | Matching bracket | |
+| `h/j/k/l` | Move Cursor | Move left/down/up/right |
+| `0` | Beginning of Line | Go to beginning of line |
+| `^` | First Non-Blank | Go to first non-whitespace character |
+| `$` | End of Line | Go to end of line |
+| `gg` | First Line | Go to first line of file |
+| `G` | Last Line | Go to last line of file |
+| `%` | Matching Bracket | Jump to matching bracket/parenthesis |
+| `w` | Next Word | Move to beginning of next word |
+| `W` | Next WORD | Move to beginning of next WORD (whitespace-separated) |
+| `b` | Previous Word | Move to beginning of previous word |
+| `B` | Previous WORD | Move to beginning of previous WORD |
+| `e` | End of Word | Move to end of current/next word |
+| `E` | End of WORD | Move to end of current/next WORD |
+| `ge` | End Previous Word | Move to end of previous word |
+| `f{char}` | Find Character | Move to next occurrence of character |
+| `F{char}` | Find Backward | Move to previous occurrence of character |
+| `t{char}` | Till Character | Move to just before next occurrence |
+| `T{char}` | Till Backward | Move to just after previous occurrence |
+
 
 ### Advanced navigation
 | Keybinding | Title | Description |
@@ -43,8 +57,17 @@
 | `<leader>bo` | Delete other buffers | |
 | `<leader>bD` | Delete buffer and window | |
 
-### Tab Management
+### IntelliSense Navigation
+| Keybinding | Title | Description |
+|------------|-------|-------------|
+| `<C-n>` | Next item | |
+| `<C-p>` | Previous item | |
+| `<C-d>` | Scroll docs up | |
+| `<C-f>` | Scroll docs down | |
+| `K` | Show documentation | normal mode |
+| `<C-k>` | Show signature | insert mode |
 
+### Tab Management
 | Keybinding | Title | Description |
 |------------|-------|-------------|
 | `<leader><tab><tab>` | New Tab | |
@@ -164,6 +187,7 @@
 | `<A-j>` | Move line down | Move line down |
 | `<A-k>` | Move line up | Move line up |
 | `J` | Join lines | Join current and next line |
+| `gcc` | toggle comment |  |
 | `gco` | Add comment below | Add comment below |
 | `gcO` | Add comment above | Add comment above |
 
