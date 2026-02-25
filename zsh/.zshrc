@@ -20,13 +20,17 @@ source ${ZDOTDIR:-~}/git.zsh
 source ${ZDOTDIR:-~}/fzf.zsh
 source ${ZDOTDIR:-~}/functions/ports.zsh
 source ${ZDOTDIR:-~}/functions/dj.zsh
+source ${ZDOTDIR:-~}/plugins/tmux-status.zsh
 source ${ZDOTDIR:-~}/plugins/command-time.zsh
 
 # TODO: work in progress
 # source ${ZDOTDIR:-~}/prompt.zsh
 
 PS1=$'%F{blue}%B%~%b%f ${vcs_info_msg_0_}%F{green}❯%f '
-RPS1=$'%(?.%F{green}●.%F{red}●[%?]%f) %F{blue}%D%f %F{green}%*%f'
+# RPS1 removed - date/time/status now shown in tmux status bar
+RPS1=''
+# PS2 - continuation prompt (empty to avoid copying ">" when selecting multi-line commands)
+PS2=''
 
 
 ${ZDOTDIR:-~}/install_brew_packages.zsh

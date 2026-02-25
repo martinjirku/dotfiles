@@ -22,8 +22,21 @@ _command_time_precmd() {
     timer_show=$(($SECONDS - $timer))
     if [ -n "$TTY" ] && [ $timer_show -ge ${ZSH_COMMAND_TIME_MIN_SECONDS:-3} ]; then
       export ZSH_COMMAND_TIME="$timer_show"
-      if [ ! -z ${ZSH_COMMAND_TIME_MSG} ]; then
+      # Update tmux status bar if inside tmux
+      if [ -n "$TMUX" ]; then
+        timer_formatted=$(printf '%dh:%02dm:%02ds' $(($timer_show/3600)) $(($timer_show%3600/60)) $(($timer_show%60)))
+        tmux set-environment -g ZSH_COMMAND_TIME "$timer_formatted" 2>/dev/null
+        tmux set-environment -g ZSH_COMMAND_TIME_RAW "$timer_show" 2>/dev/null
+      fi
+      # Only print in shell if not inside tmux (tmux status bar will show it)
+      if [ ! -z ${ZSH_COMMAND_TIME_MSG} ] && [ -z "$TMUX" ]; then
         zsh_command_time
+      fi
+    else
+      # Clear command time if below threshold or no timer
+      if [ -n "$TMUX" ]; then
+        tmux set-environment -g ZSH_COMMAND_TIME "" 2>/dev/null
+        tmux set-environment -g ZSH_COMMAND_TIME_RAW "" 2>/dev/null
       fi
     fi
     unset timer

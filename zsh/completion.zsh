@@ -7,7 +7,7 @@ if command -v pnpm >/dev/null 2>&1; then
 fi
 
 # Package.json script completion
-# This allows you to run npm/yarn/pnpm scripts with tab completion
+# This allotws you to run npm/yarn/pnpm scripts with tab completion
 _npm_scripts() {
   local package_json_path="package.json"
   
