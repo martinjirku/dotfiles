@@ -131,12 +131,17 @@ tmux
 - `Ctrl+a [`: Enter copy mode (vim keybindings)
 - `Alt+Left/Right`: Switch windows
 - `Ctrl+a c`: Create new window (in current path)
+- `Ctrl+a Ctrl+f`: Open tmux-fzf menu (sessions, windows, panes, commands)
+- `Ctrl+a F`: Activate tmux-fingers (hint mode for text selection)
 
 ### Copy Mode (Vim-style)
 - `v`: Begin selection
 - `Ctrl+v`: Rectangle selection
 - `y`: Copy selection and exit
 - `q`: Exit copy mode
+- `o`: Open file path under cursor in $EDITOR (tmux-open)
+- `x`: Open file/URL under cursor with default application (tmux-open)
+- `Shift+s`: Search selected text on Google (tmux-open)
 
 ### Plugins
 - **tpm**: Tmux Plugin Manager
@@ -144,11 +149,21 @@ tmux
 - **tmux-resurrect**: Save and restore tmux sessions
 - **tmux-continuum**: Automatic session saving and restoration
 - **tmux-yank**: Enhanced clipboard integration
+- **tmux-fzf**: Fuzzy finder integration (`Ctrl+a Ctrl+f` to launch)
+- **tmux-fingers**: Vimium-style hints for text on screen (`prefix + F`)
+- **tmux-cpu**: CPU and RAM usage monitoring in status bar
+- **tmux-net-speed**: Network upload/download speed in status bar
+- **tmux-open**: Smart file/URL opening from copy mode
+- **tmux-fzf**: Fuzzy finder integration (`Ctrl+a Ctrl+f` to launch)
+- **tmux-fingers**: Vimium-style hints for text on screen (`prefix + F`)
+- **tmux-cpu**: CPU and RAM usage monitoring in status bar
+- **tmux-net-speed**: Network upload/download speed in status bar
 
 ### Status Bar
 - Left: Session name and separator
-- Right: Date, time, and hostname
+- Right: CPU/RAM usage (color-coded), network speed (upload/download), date, time, and hostname
 - Window list: Shows window index and name with visual indicator for active window
+- CPU/RAM colors: Green (low), Yellow (medium), Red (high)
 
 ## Development Workflow
 
