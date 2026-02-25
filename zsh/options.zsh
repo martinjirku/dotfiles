@@ -7,7 +7,7 @@ setopt LIST_ROWS_FIRST
 
 
 # vi mode
-set -o vi
+# set -o vi
 
 # Reduce key delay (default is 0.4s which feels sluggish)
 export KEYTIMEOUT=1
