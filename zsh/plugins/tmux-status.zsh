@@ -1,13 +1,4 @@
-# Auto-start tmux if not already in tmux
-if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -z "$INSIDE_EMACS" ] && [ -z "$VSCODE_INJECTION" ]; then
-  # Check if this is an interactive shell
-  if [[ $- == *i* ]]; then
-    # Try to attach to existing session, or create new one
-    tmux attach-session -t default || tmux new-session -s default
-  fi
-fi
-
-# Update tmux status bar with command exit status
+# Update tmux status bar with command exit status (when inside tmux)
 _tmux_status_precmd() {
   local exit_code=$?
   if [ -n "$TMUX" ]; then
