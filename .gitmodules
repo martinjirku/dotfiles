@@ -4,6 +4,3 @@
 [submodule "plugins/ohmyzsh"]
 	path = zsh/plugins/ohmyzsh
 	url = git@github.com:ohmyzsh/ohmyzsh.git
-[submodule "tmux/plugins/tpm"]
-	path = tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git

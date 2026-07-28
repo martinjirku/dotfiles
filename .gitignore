@@ -1,3 +1,6 @@
 nvim/lazy-lock.json
 nvim/lazyvim.json
-tmux/plugins/.DS_Store
+zsh/.zcompdump*
+zsh/.zsh_sessions/
+zsh/.zcompcache/
+zsh/.zsh_history
