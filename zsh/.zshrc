@@ -20,6 +20,8 @@ source ${ZDOTDIR:-~}/git.zsh
 source ${ZDOTDIR:-~}/fzf.zsh
 source ${ZDOTDIR:-~}/functions/ports.zsh
 source ${ZDOTDIR:-~}/functions/dj.zsh
+source ${ZDOTDIR:-~}/functions/utils.zsh
+source ${ZDOTDIR:-~}/plugins/direnv.zsh
 source ${ZDOTDIR:-~}/plugins/tmux-status.zsh
 source ${ZDOTDIR:-~}/plugins/command-time.zsh
 
@@ -48,3 +50,6 @@ PATH=$PATH:/usr/local/go/bin/
 # man podman-compose
 export PODMAN_COMPOSE_PROVIDER=/usr/local/bin/docker-compose
 export PODMAN_COMPOSE_WARNING_LOGS=false
+
+# Local overrides (secrets, company config, machine-specific)
+[[ -f ~/.zshrc ]] && source ~/.zshrc
